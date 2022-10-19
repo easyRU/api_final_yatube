@@ -4,6 +4,7 @@ from rest_framework.permissions import (IsAuthenticated,
                                         IsAuthenticatedOrReadOnly)
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.pagination import LimitOffsetPagination
 
 from posts.models import Group, Post, User
 from .permissions import OwnerOrReadOnly
@@ -27,6 +28,7 @@ class PostViewSet(ModelViewSet):
     serializer_class = PostSerializer
     permission_classes = (OwnerOrReadOnly,)
     authentication_classes = (JWTAuthentication,)
+    pagination_class = LimitOffsetPagination 
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
