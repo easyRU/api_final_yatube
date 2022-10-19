@@ -51,11 +51,7 @@ PATCH http://127.0.0.1:8000/api/v1/posts/2/
 GET http://127.0.0.1:8000/api/v1/posts/?limit=2&offset=2 with pagination
 ```
 
-<<<<<<< HEAD
-![image](https://user-images.githubusercontent.com/96536178/196791032-2f040742-8a5d-41f2-a88a-40c645d8c1b4.png)
-=======
 ![image](https://user-images.githubusercontent.com/96536178/196791032-2f040742-8a5d-41f2-a88a-40c645d8c1b4.png)
 
 
 
->>>>>>> 6b1c41659a9add7455ddd6c539d188646830fc56
