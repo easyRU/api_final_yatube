@@ -29,7 +29,7 @@ class PostViewSet(ModelViewSet):
     serializer_class = PostSerializer
     permission_classes = (OwnerOrReadOnly,)
     authentication_classes = (JWTAuthentication,)
-    pagination_class = LimitOffsetPagination 
+    pagination_class = LimitOffsetPagination
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
