@@ -1,21 +1,21 @@
 from django.shortcuts import get_object_or_404
-from posts.models import Group, Post, User
-
-from rest_framework import filters
+from rest_framework import filters, mixins
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import (IsAuthenticated,
                                         IsAuthenticatedOrReadOnly)
-from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
+from rest_framework.viewsets import GenericViewSet, ModelViewSet, ReadOnlyModelViewSet
 from rest_framework_simplejwt.authentication import JWTAuthentication
+
+from posts.models import Group, Post
 
 from .permissions import OwnerOrReadOnly
 from .serializers import (CommentSerializer, FollowSerializer, GroupSerializer,
-                          PostSerializer, UserSerializer)
+                          PostSerializer)
 
 
-class UserViewSet(ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+class CreateListViewSet(mixins.CreateModelMixin, mixins.ListModelMixin,
+                            GenericViewSet):
+    pass
 
 
 class GroupViewSet(ReadOnlyModelViewSet):
@@ -49,7 +49,7 @@ class CommentViewSet(ModelViewSet):
         serializer.save(author=self.request.user, post=post)
 
 
-class FollowViewSet(ModelViewSet):
+class FollowViewSet(CreateListViewSet):
     serializer_class = FollowSerializer
     permission_classes = (IsAuthenticated,)
     authentication_classes = (JWTAuthentication,)
