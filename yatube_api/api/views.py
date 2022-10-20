@@ -3,7 +3,7 @@ from rest_framework import filters, mixins
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import (IsAuthenticated,
                                         IsAuthenticatedOrReadOnly)
-from rest_framework.viewsets import (GenericViewSet, ModelViewSet, 
+from rest_framework.viewsets import (GenericViewSet, ModelViewSet,
                                      ReadOnlyModelViewSet)
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
