@@ -43,7 +43,7 @@ class FollowSerializer(serializers.ModelSerializer):
         slug_field='username',
         queryset=User.objects.all(),
         validators=[UniqueValidator(
-        queryset=User.objects.all())]
+                    queryset=User.objects.all())]
     )
 
     def validate_following(self, value):
