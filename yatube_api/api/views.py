@@ -3,7 +3,8 @@ from rest_framework import filters, mixins
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import (IsAuthenticated,
                                         IsAuthenticatedOrReadOnly)
-from rest_framework.viewsets import GenericViewSet, ModelViewSet, ReadOnlyModelViewSet
+from rest_framework.viewsets import (GenericViewSet, ModelViewSet, 
+                                     ReadOnlyModelViewSet)
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from posts.models import Group, Post
@@ -14,7 +15,7 @@ from .serializers import (CommentSerializer, FollowSerializer, GroupSerializer,
 
 
 class CreateListViewSet(mixins.CreateModelMixin, mixins.ListModelMixin,
-                            GenericViewSet):
+                        GenericViewSet):
     pass
 
 
